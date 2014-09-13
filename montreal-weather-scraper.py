@@ -4,6 +4,8 @@ from bs4 import BeautifulSoup
 
 f = open('weather_data.csv', 'wb')
 writer = unicodecsv.writer(f)
+
+# Column headers
 writer.writerow(['Year','Month','Day','Max Temp (C)','Min Temp (C)','Mean Temp (C)',
                 'Heat Deg Days (C)','Cool Deg Days (C)','Total Rain (mm)','Total Snow (cm)',
                 'Total Precip (mm)','Snow on Grnd (cm)','Dir of Max Gust (10s deg)','Spd of Max Gust (km/h)'])
@@ -20,6 +22,7 @@ for year in range(1955, 2015):  # This will include all of 2014 so far
         soup = BeautifulSoup(data)
         table = soup.find("table", attrs={"class","wet-boew-zebra"})
         for tr in table.find_all('tr')[2:]:
+            #skip header and summary rows                        
             if tr.findChildren('th'):
                 continue
             tds = tr.find_all('td')
