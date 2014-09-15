@@ -14,7 +14,7 @@ start_url = "http://climate.weather.gc.ca/climateData/dailydata_e.html?timeframe
 mid_url = '&Month='
 end_url = "&cmdB1=Go#"
 
-for year in range(1955, 2015):  # This will include all of 2014 so far
+for year in range(1942, 2015):  # This will include all of 2014 so far
     for month in range (1,13):
         print "Processing data for %s / %s" % (month, year)
         r = requests.get(start_url + str(year) + mid_url + str(month) + end_url)
